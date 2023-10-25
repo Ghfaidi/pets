@@ -4,9 +4,9 @@ def buildImage() {
     sh "ls"
     sh "ls target/"
     withCredentials([usernamePassword(credentialsId: 'docker-hub-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-        sh "docker build -t faigh/petspring:${IMAGE_VERSION} ."
+        sh "docker build -t faigh/petspring:1.0.0 ."
         sh "echo $PASS | docker login -u $USER --password-stdin"
-        sh "docker push faigh/petspring:${IMAGE_VERSION}"
+        sh "docker push faigh/petspring:1.0.0"
     }
 }
 def test() {
